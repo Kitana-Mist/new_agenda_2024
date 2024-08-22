@@ -30,16 +30,40 @@
                   </tr>
                   </thead>
                   <tbody>
-                  
-                                      
+
+                <!------------------------------------------------------------------------------------->
+                  <?php
+                    $select = "SELECT * FROM tb_contatos ORDER BY id_contatos DESC";
+                    try {
+                      $result = $conect->prepare($select);
+                      $cont = 1;
+                      $result->execute();
+
+                      $contar = $result->rowCount();
+                    if ($contar > 0) {
+                    while ($show = $result->FETCH(PDO::FETCH_OBJ)) {
+                  ?>
+                  <!------------------------------------------------------------------------------------->
+                            
                     <tr>
-                      <td>1</td>
+                      <td><?php echo $cont++; ?></td>
                       <td>
-                      <img src="images/">
+                      <!--IMAGEM-->
+                      <?php
+                        // Verifica se a variável $foto_user é igual a 'avatar-padrao.png'
+                        if ($foto_user == 'avatar-padrao.png') {
+                        // Exibe a imagem do avatar padrão
+                          echo '<img src="../img/avatar_p/' . $foto_user . '" alt="' . $foto_user . '" title="' . $foto_user . '" style="width: 40px; border-radius: 100%;">';
+                        } else {
+                        // Exibe a imagem do usuário
+                          echo '<img src="../img/user/' . $foto_user . '" alt="' . $foto_user . '" title="' . $foto_user . '" style="width: 40px; border-radius: 100%;">';
+                        }
+                      ?>
+                      <!-------->
                      </td>
-                      <td>Leandro Costa</td>
-                      <td>85991446498</td>
-                      <td>francisco.silva92@prof.ce.gov.br</td>
+                    <td><?php echo $show->nome_contatos;?></td>
+                    <td><?php echo $show->fone_contatos;?></td>
+                    <td><?php echo $show->email_contatos;?></td>
                       
                       <td>
                       <div class="btn-group">
@@ -48,8 +72,23 @@
                       </div>
                       </td>
                     </tr>
-                   
-                  </tbody>
+                  
+                  <!------------------------------------------------------------------------------------->
+                    <?php
+                  }
+                    } else {
+                  echo'<div class="alert alert-danger">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                  <strong>Erro!</strong> Senha incorreta, tente novamente.</div>';
+                    }
+                  } catch (PDOException $e) {
+                    // Exibe a mensagem de erro de PDO
+                    echo '<strong>ERRO DE PDO= </strong>' . $e->getMessage();
+                  }
+                   ?>
+                <!------------------------------------------------------------------------------------->
+                  
+                </tbody>
                   <tfoot>
                   <tr>
                     <th>#</th>
