@@ -18,16 +18,16 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-hover">
+                <table id="example" class="display nowrap" style="width:100%">
                   <thead>
                   <tr>
-                    <th>#</th>
-                    <th>Foto</th>
-                    <th>Nome</th>
-                    <th>Telefone</th>
-                    <th>E-mail</th>
-                    <th>Ações</th>
-                  </tr>
+                      <th style='width: 5%; text-align:center'>#</th>
+                      <th style="text-align:center">Foto</th>
+                      <th>Nome</th>
+                      <th style="text-align:left">Telefone</th>
+                      <th>E-mail</th>
+                      <th>Ações</th>
+                   </tr>
                   </thead>
                   <tbody>
 
